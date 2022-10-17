@@ -20,7 +20,9 @@
         "drupal/core": "9.5.x-dev",
         "drupal/core-composer-scaffold": "9.5.x-dev",
         "drupal/core-recommended": "9.5.x-dev",
+        "drupal/crop": "^2.3",
         "drupal/focal_point": "1.x-dev",
+        "drupal/jquery_ui_draggable": "^1.2",
         "drush/drush": "^11.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "wikimedia/composer-merge-plugin": "^2.0"
@@ -67,14 +69,14 @@
                 "[web-root]/web.config": false
             },
             "initial": {
-                "sites/default/default.services.yml": "docroot/sites/default/default.services.yml",
-                "sites/default/default.settings.php": "docroot/sites/default/default.settings.php",
-                "robots.txt": "docroot/robots.txt",
-                ".htaccess": "docroot/.htaccess"
+                "sites/default/default.services.yml": "web/sites/default/default.services.yml",
+                "sites/default/default.settings.php": "web/sites/default/default.settings.php",
+                "robots.txt": "web/robots.txt",
+                ".htaccess": "web/.htaccess"
             },
             "omit-defaults": true,
             "locations": {
-                "web-root": "docroot/"
+                "web-root": "web/"
             }
         },
         "installer-types": [
@@ -83,28 +85,28 @@
             "npm-asset"
         ],
         "installer-paths": {
-            "docroot/core": [
+            "web/core": [
                 "type:drupal-core"
             ],
-            "docroot/modules/contrib/{$name}": [
+            "web/modules/contrib/{$name}": [
                 "type:drupal-module"
             ],
-            "docroot/profiles/contrib/{$name}": [
+            "web/profiles/contrib/{$name}": [
                 "type:drupal-profile"
             ],
-            "docroot/themes/contrib/{$name}": [
+            "web/themes/contrib/{$name}": [
                 "type:drupal-theme"
             ],
             "drush/Commands/contrib/{$name}": [
                 "type:drupal-drush"
             ],
-            "docroot/modules/custom/{$name}": [
+            "web/modules/custom/{$name}": [
                 "type:drupal-custom-module"
             ],
-            "docroot/themes/custom/{$name}": [
+            "web/themes/custom/{$name}": [
                 "type:drupal-custom-theme"
             ],
-            "docroot/libraries/{$name}": [
+            "web/libraries/{$name}": [
                 "type:drupal-library",
                 "type:npm-asset",
                 "type:bower-asset"
@@ -114,6 +116,9 @@
             "drupal/core": "-p2"
         },
         "patches": {
+            "drupal/focal_point": {
+                "Draft: Issue #3295940: Fix test, D10 compatibility things and drupal-check errors.":"https://git.drupalcode.org/project/focal_point/-/merge_requests/3.patch"
+            }
         }
     },
     "scripts": {
